@@ -15,6 +15,7 @@ function init() {
     moves=9;
     scoreTable = [0,0,0,0,0,0,0,0,0]
     winner=false
+    cross=true
     for (const wind of windows) {
         wind.addEventListener("click", showContent)
     }
@@ -24,13 +25,12 @@ function showContent(event){
     index=event.target.id
     output.innerText=""
 
-
     if(cross && moves!==0){
         windows[index].innerText="X"
         scoreTable[index]=1
         checkResult()
         cross=!cross;
-        moves--;
+
         console.log(index+ " kryzius ")
 
     }  else if (moves!==0){
@@ -38,20 +38,18 @@ function showContent(event){
         scoreTable[index]=-1
         checkResult()
         cross=!cross;
-        moves--;
         console.log(index+ " nulis ")
     }
-    moves===0 ? checkResult() : null
-
+    --moves===0  ? checkResult() : null
     windows[index].removeEventListener("click", showContent)
 }
 
 function checkResult(){
     let value;
-    let result="No result "
+    let result= "crosses won"
     cross ? value=3 : value=-3
 
-    winner=(scoreTable[0]+scoreTable[1]+scoreTable[2]) === value ||
+    winner=
         (scoreTable[0]+scoreTable[3]+scoreTable[6]) === value ||
         (scoreTable[3]+scoreTable[4]+scoreTable[5]) === value ||
         (scoreTable[6]+scoreTable[7]+scoreTable[8]) === value ||
@@ -60,8 +58,10 @@ function checkResult(){
         (scoreTable[0]+scoreTable[1]+scoreTable[2]) === value ||
         (scoreTable[1]+scoreTable[4]+scoreTable[7]) === value ||
         (scoreTable[2]+scoreTable[5]+scoreTable[8]) === value
-    && moves>0 ? cross ? showResults(result="Crosses won") : showResults(result="Zeros won") : moves===0? showResults(result="nobody wins!") : false
-    //console.log(winner)
+
+
+    winner && moves>0? cross ? showResults(result="Crosses won") : showResults(result="Zeros won") : moves===1  ? showResults(result="nobody won!") : true
+    console.log(winner + " *"+ cross+ "* " + moves)
 
     if(winner || moves===0) {
         setTimeout(()=> {
