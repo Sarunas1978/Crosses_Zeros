@@ -8,6 +8,7 @@ let scoreTable = [0,0,0,0,0,0,0,0,0]
 let moves=0;
 let winner=false
 let index;
+let result= "crosses won"
 
 init()
 
@@ -15,7 +16,7 @@ function init() {
     moves=9;
     scoreTable = [0,0,0,0,0,0,0,0,0]
     winner=false
-    cross=true
+    cross ? result="crosses won" : result="Zeros won"
     for (const wind of windows) {
         wind.addEventListener("click", showContent)
     }
@@ -46,7 +47,7 @@ function showContent(event){
 
 function checkResult(){
     let value;
-    let result= "crosses won"
+
     cross ? value=3 : value=-3
 
     winner=
@@ -69,7 +70,7 @@ function checkResult(){
                 wind.innerHTML = ""
                 wind.removeEventListener("click", showContent)
             }
-            output.innerText=`previuos results: ${result}`
+            //output.innerText=`previuos results: ${result}`
             init()
         }, 2000)
     }
