@@ -1,0 +1,56 @@
+.displayFlex{
+    display: flex;
+}
+.flexDirectionC{
+    flex-direction: column;
+}
+.displayJustifyContentC
+{
+    justify-content: center;
+}
+.displayJustifyContentSpaceB
+{
+    justify-content: space-between;
+}
+.alignContent{
+    align-content: center;
+}
+.alignItemsC{
+    align-items: center;
+}
+.justifyItems{
+    justify-items: center;
+}
+.alignSelfE{
+    align-self: end;
+}
+.alignSelfC{
+    align-self: center;
+}
+.textAlignC{
+    text-align: center;
+}
+.flexWrap{
+    flex-wrap: wrap;
+}
+.floatRight{
+    float: right;
+}
+.floatLeft{
+    float: left;
+}
+
+.divMain{
+    height: 400px;
+    width: 400px;
+}
+.w-100{
+    width:110px;
+    height: 110px;
+    background: #b1b0b0;
+    margin: 5px;
+    font-size: 60px;
+}
+
+
+
