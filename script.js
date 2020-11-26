@@ -23,21 +23,25 @@ function showContent(event){
     console.log(event)
     index=event.target.id
     output.innerText=""
-    moves--;
+
 
     if(cross && moves!==0){
         windows[index].innerText="X"
         scoreTable[index]=1
         checkResult()
         cross=!cross;
+        moves--;
         console.log(index+ " kryzius ")
-    }  else{
+
+    }  else if (moves!==0){
         windows[index].innerText="O"
         scoreTable[index]=-1
         checkResult()
         cross=!cross;
+        moves--;
         console.log(index+ " nulis ")
     }
+    moves===0 ? checkResult() : null
 
     windows[index].removeEventListener("click", showContent)
 }
